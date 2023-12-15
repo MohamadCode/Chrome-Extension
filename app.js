@@ -1,5 +1,6 @@
-let saveBtn = document.getElementById("input-btn") 
+let inputBtn = document.getElementById("input-btn") 
 
-function saveinput() {
+inputBtn.addEventListener("click", function () {
     console.log("button clicked")
-}
+})
+
