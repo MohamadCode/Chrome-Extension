@@ -1,4 +1,8 @@
-let myLeads = []
+let myLeads = ["www.awesomelead.com"]
+myLeads.push("www.google.com")
+myLeads = JSON.stringify(myLeads)
+console.log(myLeads)
+
 const inputEl = document.getElementById("input-el")
 const inputBtn = document.getElementById("input-btn")
 const ulEl = document.getElementById("ul-el")
