@@ -11,6 +11,26 @@ if (leadsFromLocalStorage) {
   renderLeads()
 }
 
+// Refector the function so that it takes a parameter, leads, that it uses
+// instead of the global myLeads variable. Remember to update all invocations 
+// of the function as well.
+
+
+function renderLeads() {
+  let listItems =    " "  
+  
+    for (let index = 0; index < myLeads.length; index++) {
+    listItems += `
+              <li>
+                  <a target='_blank' href='${myLeads[index]}'>
+                      ${myLeads[index]}
+                  </a>
+              </li>
+          `  }
+    ulEl.innerHTML = listItems
+    }
+
+
 
 deleteBtn.addEventListener('dblclick', function(){ 
   localStorage.clear()
@@ -29,20 +49,6 @@ inputBtn.addEventListener("click", function () {
   console.log( localStorage.getItem("myLeads") )
 }
 )
-
-function renderLeads() {
-  let listItems =  " "  
-  
-    for (let index = 0; index < myLeads.length; index++) {
-    listItems += `
-              <li>
-                  <a target='_blank' href='${myLeads[index]}'>
-                      ${myLeads[index]}
-                  </a>
-              </li>
-          `  }
-    ulEl.innerHTML = listItems
-    }
 
 
 
