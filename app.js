@@ -8,7 +8,7 @@ const leadsFromLocalStorage = JSON.parse( localStorage.getItem("myLeads") )
 
 if (leadsFromLocalStorage) {
   myLeads = leadsFromLocalStorage
-  renderLeads()
+  render(myLeads)
 }
 
 // Refector the function so that it takes a parameter, leads, that it uses
@@ -16,14 +16,14 @@ if (leadsFromLocalStorage) {
 // of the function as well.
 
 
-function renderLeads() {
+function render(leads) {
   let listItems =    " "  
   
-    for (let index = 0; index < myLeads.length; index++) {
+    for (let index = 0; index < leads.length; index++) {
     listItems += `
               <li>
-                  <a target='_blank' href='${myLeads[index]}'>
-                      ${myLeads[index]}
+                  <a target='_blank' href='${leads[index]}'>
+                      ${leads[index]}
                   </a>
               </li>
           `  }
@@ -35,7 +35,7 @@ function renderLeads() {
 deleteBtn.addEventListener('dblclick', function(){ 
   localStorage.clear()
   myLeads = []
-  renderLeads()  
+  render(myLeads)  
 })
 
 
@@ -44,7 +44,7 @@ inputBtn.addEventListener("click", function () {
   myLeads.push(inputEl.value)
   inputEl.value = ""
   localStorage.setItem("myLeads", JSON.stringify(myLeads))
-  renderLeads()
+  render(myLeads)
 
   console.log( localStorage.getItem("myLeads") )
 }
