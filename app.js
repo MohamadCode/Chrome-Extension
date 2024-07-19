@@ -1,5 +1,8 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js"
-import { getDatabase } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-database.js"
+import { getDatabase,
+  ref, 
+  push } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-database.js"
+
 
 
 const firebaseConfig = {
@@ -8,10 +11,9 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig)
 const database = getDatabase(app)
+const referenceinDB = ref(database, "Leads")
 
 
-
-let myLeads = []
 
 const inputEl = document.getElementById("input-el")
 const inputBtn = document.getElementById("input-btn")
@@ -41,18 +43,16 @@ function render(leads) {
 
 
 deleteBtn.addEventListener('dblclick', function(){ 
-  myLeads = []
-  render(myLeads)  
+
+  
 })
 
 
 
 inputBtn.addEventListener("click", function () {
-  myLeads.push(inputEl.value)
+  push(referenceinDB,inputEl.value)
   inputEl.value = ""
-  render(myLeads)
 
-  console.log( localStorage.getItem("myLeads") )
 }
 )
 
