@@ -1,7 +1,9 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js"
 import { getDatabase,
   ref, 
-  push } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-database.js"
+  push,
+  onValue } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-database.js"
+
 
 
 
@@ -40,6 +42,15 @@ function render(leads) {
           `  }
     ulEl.innerHTML = listItems
     }
+
+
+onValue(referenceinDB,function(snapshot) {
+  
+  console.log(snapshot.val())
+
+})
+
+
 
 
 deleteBtn.addEventListener('dblclick', function(){ 
