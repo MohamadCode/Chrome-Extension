@@ -1,3 +1,16 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js"
+import { getDatabase } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-database.js"
+
+
+const firebaseConfig = {
+    databaseURL: "https://leads-tracker-app-10733-default-rtdb.asia-southeast1.firebasedatabase.app/"
+}
+
+const app = initializeApp(firebaseConfig)
+const database = getDatabase(app)
+
+
+
 let myLeads = []
 
 const inputEl = document.getElementById("input-el")
@@ -13,9 +26,7 @@ if (leadsFromLocalStorage) {
   render(myLeads)
 }
 
-const tabs = [
-  {url: "https://www.linkedin.com/in/per-harald-borgen/"}
-]
+
 
 tabBtn.addEventListener("click", function(){    
   chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
@@ -38,7 +49,6 @@ function render(leads) {
           `  }
     ulEl.innerHTML = listItems
     }
-
 
 
 deleteBtn.addEventListener('dblclick', function(){ 
