@@ -2,7 +2,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/fireba
 import { getDatabase,
   ref, 
   push,
-  onValue } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-database.js"
+  onValue,
+  remove } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-database.js"
 
 
 
@@ -45,16 +46,23 @@ function render(leads) {
 
 
 onValue(referenceinDB,function(snapshot) {
-
-  const snapshotValues = snapshot.val()  
-  const leads = Object.values(snapshotValues)
-  render(leads)  
+    // Challenge: Only run the code below if a snapshot exists
+    const snapshotDoesexist = snapshot.exists()
+  if (snapshotDoesexist) {
+    const snapshotValues = snapshot.val()  
+    const leads = Object.values(snapshotValues)
+    render(leads) 
+  }
+   
 })
 
 
 deleteBtn.addEventListener('dblclick', function(){ 
+    remove(referenceinDB)
+    ulEl.innerHTML = " "
 
-  
+      // Challenge: Import the 'remove' function and call it here to delete the leads
+
 })
 
 
