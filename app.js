@@ -48,8 +48,7 @@ onValue(referenceinDB,function(snapshot) {
 
   const snapshotValues = snapshot.val()  
   const leads = Object.values(snapshotValues)
-  console.log(leads)
-  
+  render(leads)  
 })
 
 
